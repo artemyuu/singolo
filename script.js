@@ -53,6 +53,9 @@ rButton.addEventListener('click', function(e){
 //////////////////////////////////////////////////////////////////////
 
 //Модальное окно//////////////////////////////////////////////////////
+let name = document.querySelector("#nameQuote");  
+let email = document.querySelector("#emailQuote"); 
+
 let modal = document.querySelector("#myModal");
 let modalContent = document.querySelector(".modal__content");
 let btnOk = document.querySelector("#okBtn");
@@ -62,7 +65,8 @@ let text = document.querySelector("#textAreaQuote");
 let msg = document.createElement('div');
 
 submit.addEventListener('click', function(e){
-    modal.style.display = "block";
+    if(name.value != "" && email.value != ""){
+        modal.style.display = "block";
     if(subj.value == "" && text.value !=""){
         msg.innerHTML = `<p>Письмо отправлено</p><p>Без темы</p><p>Описание: ${text.value}</p>`;
     }
@@ -80,6 +84,8 @@ submit.addEventListener('click', function(e){
     }
     
     modalContent.prepend(msg);
+    }
+    
 });
 
 btnOk.addEventListener('click', function(e){
